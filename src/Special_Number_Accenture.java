@@ -2,14 +2,11 @@
     you have to find the  `K` smallest integers that are not divisible by any of the `N` integers
     and return the sum of `K` integers.
  */
-
 import java.util.Scanner;
-
 public class Special_Number_Accenture {
     static int DesiredArray(int[] arr , int k)
     {
         int sum=0,number=1;
-        int n = arr.length;
         while(k>0)
         {
             boolean isDivisible=false;
