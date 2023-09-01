@@ -39,7 +39,6 @@ public class Large_Small_Sum_Accenture {
         Collections.sort(odd);
         Collections.sort(even);
         int e = even.size();
-        int o = odd.size();
         if(arr.length<3) return 0;
 
         return even.get(e-2)+ odd.get(1);
