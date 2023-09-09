@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Paranthesis_Checker {
+public class Parenthesis_Checker {
     static boolean isValid(String arr) {
         Stack<Character> st = new Stack<>();
         for (char c : arr.toCharArray()) {
@@ -9,8 +9,10 @@ public class Paranthesis_Checker {
             else{
                 if(st.empty()) return false;
 
-            char top = st.pop();
-            if ((c == ']' && top=='[') || (c == '}' && top=='{')|| (c == ')' && top=='(') ) continue;
+            char top = st.peek();
+            if ((c == ']' && top=='[') || (c == '}' && top=='{')|| (c == ')' && top=='(') ) {
+                st.pop();
+            }
             else return false;
             }
         }
