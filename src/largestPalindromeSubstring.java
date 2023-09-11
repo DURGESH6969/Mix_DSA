@@ -3,35 +3,37 @@
 import java.util.Scanner;
 
 public class largestPalindromeSubstring {
-    static void find_largest_substring(String str){
-        int n =str.length();
-        char[] s = str.toCharArray();
-        int maxlength=1,start=0;
-        for(int i=0;i<n;i++)
+    static String find_largest_substring(String s){
+        String result="";
+        for(int i=0;i<s.length();i++)
         {
-            for(int j=i;j<n;j++)
-            {
-                int flag=1;
-                for(int k=0;k<(j-i+1)/2;k++)
-                {
-                    if(s[i+k]!=s[j-k]) flag=0;
-                    if(flag==1 && (j-i+1)>maxlength){
-                        start=i;
-                        maxlength=j-i+1;
-                    }
-                }
-            }
+            String sub1 = expand(s,i,i);
+            if(sub1.length()>result.length())
+                result=sub1;
+            String sub2 = expand(s,i,i+1);
+            if(sub2.length()>result.length())
+                result=sub2;
         }
+        return result;
+    }
 
-        System.out.print("Max length: "+maxlength);
-
+    private static String expand(String str,int l,int r)
+    {
+        while(l>=0 && r<str.length() && str.charAt(l)==str.charAt(r))
+        {
+            r++;
+            l--;
+        }
+        return str.substring(l+1,r);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the String: ");
         String s = sc.next();
-        find_largest_substring(s);
+        int len = find_largest_substring(s).length();
+        System.out.println("Largest Palindrome sub-string:  "+find_largest_substring(s));
+        System.out.println("Length of the longest Palindrome sub-string is: "+len);
 
     }
 }
